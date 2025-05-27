@@ -1,0 +1,67 @@
+<nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+                <a href="#" class="flex-shrink-0">
+                    <span class="text-2xl font-bold text-blue-600">Digiplot</span>
+                </a>
+            </div>
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                    <a href="#" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
+                            Productos <i class="fas fa-chevron-down ml-1"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-96 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out invisible group-hover:visible z-20">
+                            <div class="p-4 grid grid-cols-2 gap-4">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Computadores</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Notebooks</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Componentes PC</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Periféricos</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Almacenamiento</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Audio y Video</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Impresoras</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Accesorios</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Servicio Técnico</a>
+                    <a href="#" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Nosotros</a>
+                    <a href="#" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contacto</a>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <div class="relative hidden md:block mr-4">
+                    <input type="search" placeholder="Buscar productos..." class="form-input py-2 px-3 border border-gray-300 rounded-md text-sm leading-5 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <span class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                        <i class="fas fa-search text-gray-400"></i>
+                    </span>
+                </div>
+                <a href="#" class="text-gray-600 hover:text-gray-800 ml-2">
+                    <i class="fas fa-shopping-cart fa-lg"></i>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-gray-800 ml-4">
+                    <i class="fas fa-user-circle fa-lg"></i>
+                </a>
+            </div>
+            <div class="-mr-2 flex md:hidden">
+                <button type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                    <span class="sr-only">Abrir menú principal</span>
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <input type="search" placeholder="Buscar productos..." class="form-input py-2 px-3 border border-gray-300 rounded-md text-sm leading-5 w-full mb-2">
+            <a href="#" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+            <a href="#" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Productos</a>
+            <a href="#" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Servicio Técnico</a>
+            <a href="#" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Nosotros</a>
+            <a href="#" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Contacto</a>
+        </div>
+    </div>
+</nav>

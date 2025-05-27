@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Estilo UI - Digiplot.cl</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css"> <!-- Adjusted path -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg { 
+            background-color: #1a202c;
+        }
+        .category-card, .product-card { 
+            border-radius: 0.5rem; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .category-card:hover, .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .cta-button { 
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem; 
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .primary-cta { 
+            background-color: #3b82f6; 
+            color: white;
+        }
+        .primary-cta:hover {
+            background-color: #2563eb;
+        }
+        .secondary-cta { 
+            background-color: #10b981; 
+            color: white;
+        }
+        .secondary-cta:hover {
+            background-color: #059669;
+        }
+        .footer-bg { 
+            background-color: #374151; 
+        }
+        .page-section-title {
+            @apply text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12;
+        }
+        .style-guide-section {
+            @apply mb-12 p-6 bg-white rounded-lg shadow-md;
+        }
+        .style-guide-section-title {
+            @apply text-2xl font-bold text-gray-800 mb-6 border-b pb-2;
+        }
+        .style-guide-subsection-title {
+            @apply text-xl font-semibold text-gray-700 mb-4 mt-6;
+        }
+        .color-swatch {
+            @apply p-4 w-20 h-20 inline-block mr-2 rounded shadow align-middle;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4 md:p-8">
+    <div class="container mx-auto">
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-blue-600">Guía de Estilo UI - Digiplot.cl</h1>
+            <p class="text-lg text-gray-600">Documentación de los principales elementos visuales y componentes reutilizables.</p>
+        </header>
+
+        <!-- Colores Principales -->
+        <section class="style-guide-section">
+            <h2 class="style-guide-section-title">Colores Principales</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div>
+                    <div class="color-swatch bg-blue-600"></div>
+                    <span class="text-sm">Azul Primario (<code>bg-blue-600</code>, <code>#3b82f6</code>)</span>
+                </div>
+                <div>
+                    <div class="color-swatch bg-blue-700"></div>
+                    <span class="text-sm">Azul Primario Hover (<code>bg-blue-700</code>, <code>#2563eb</code>) - Usado en <code>.primary-cta:hover</code></span>
+                </div>
+                <div>
+                    <div class="color-swatch bg-green-500"></div>
+                    <span class="text-sm">Verde Secundario (<code>bg-green-500</code>, <code>#10b981</code>) - Usado en <code>.secondary-cta</code></span>
+                </div>
+                 <div>
+                    <div class="color-swatch bg-green-600"></div>
+                    <span class="text-sm">Verde Secundario Hover (<code>bg-green-600</code>, <code>#059669</code>) - Usado en <code>.secondary-cta:hover</code></span>
+                </div>
+                <div>
+                    <div class="color-swatch bg-gray-800"></div>
+                    <span class="text-sm">Texto Principal Oscuro (<code>text-gray-800</code>, <code>#1f2937</code>)</span>
+                </div>
+                <div>
+                    <div class="color-swatch bg-gray-700"></div>
+                    <span class="text-sm">Texto Secundario Oscuro (<code>text-gray-700</code>, <code>#374151</code>)</span>
+                </div>
+                <div>
+                    <div class="color-swatch bg-gray-600"></div>
+                    <span class="text-sm">Texto Terciario/Placeholder (<code>text-gray-600</code>, <code>#4b5563</code>)</span>
+                </div>
+                <div>
+                    <div class="color-swatch bg-gray-100 border"></div>
+                    <span class="text-sm">Fondo Principal Página (<code>bg-gray-100</code>, <code>#f3f4f6</code>)</span>
+                </div>
+                <div>
+                    <div class="color-swatch bg-white border"></div>
+                    <span class="text-sm">Fondo Contenido/Tarjetas (<code>bg-white</code>, <code>#ffffff</code>)</span>
+                </div>
+                 <div>
+                    <div class="color-swatch hero-bg"></div>
+                    <span class="text-sm">Hero Background (<code>.hero-bg</code>, <code>#1a202c</code>)</span>
+                </div>
+                 <div>
+                    <div class="color-swatch footer-bg"></div>
+                    <span class="text-sm">Footer Background (<code>.footer-bg</code>, <code>#374151</code>)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tipografía -->
+        <section class="style-guide-section">
+            <h2 class="style-guide-section-title">Tipografía</h2>
+            <p class="mb-4 text-gray-700">Familia de fuente principal: <strong>Inter</strong> (importada de Google Fonts).</p>
+            
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-3">H1: Encabezado (text-4xl sm:text-5xl md:text-6xl font-bold)</h1>
+            <h2 class="text-3xl sm:text-4xl font-bold mb-3">H2: Encabezado (text-3xl sm:text-4xl font-bold) - Usado para títulos de sección en páginas</h2>
+            <h2 class="text-2xl sm:text-3xl font-bold mb-3">H2 Alternativo: (text-2xl sm:text-3xl font-bold) - Usado para títulos de sección en homepage</h2>
+            <h3 class="text-xl font-semibold mb-3">H3: Encabezado (text-xl font-semibold) - Usado para subtítulos o títulos de tarjetas/componentes</h3>
+            <h4 class="text-lg font-semibold mb-3">H4: Encabezado (text-lg font-semibold) - Usado para títulos menores</h4>
+            <p class="text-gray-800 mb-2 leading-relaxed">Párrafo de texto (<code>text-gray-800</code>): Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p class="text-gray-700 mb-2 leading-relaxed">Párrafo de texto secundario (<code>text-gray-700</code>): Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <p class="text-gray-600 text-sm mb-2 leading-relaxed">Párrafo de texto pequeño/auxiliar (<code>text-gray-600 text-sm</code>): Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <a href="#" class="text-blue-600 hover:text-blue-800 hover:underline">Esto es un enlace (<code>text-blue-600 hover:text-blue-800</code>)</a>
+        </section>
+
+        <!-- Botones (CTAs) -->
+        <section class="style-guide-section">
+            <h2 class="style-guide-section-title">Botones (CTAs)</h2>
+            <div class="space-y-4">
+                <div>
+                    <h3 class="style-guide-subsection-title">Botón Primario</h3>
+                    <button class="cta-button primary-cta">Botón Primario</button>
+                    <button class="cta-button primary-cta hover:bg-blue-700">Botón Primario (Hover)</button>
+                    <p class="text-sm text-gray-600 mt-2">Clases: <code>cta-button primary-cta</code>. Hover: <code>hover:bg-blue-700</code> (o la clase <code>.primary-cta:hover</code> de la hoja de estilos).</p>
+                </div>
+                <div>
+                    <h3 class="style-guide-subsection-title">Botón Secundario</h3>
+                    <button class="cta-button secondary-cta">Botón Secundario</button>
+                    <button class="cta-button secondary-cta hover:bg-green-600">Botón Secundario (Hover)</button>
+                    <p class="text-sm text-gray-600 mt-2">Clases: <code>cta-button secondary-cta</code>. Hover: <code>hover:bg-green-600</code> (o la clase <code>.secondary-cta:hover</code> de la hoja de estilos).</p>
+                </div>
+                 <div>
+                    <h3 class="style-guide-subsection-title">Botón Secundario Alternativo (ej. Lista de Deseos)</h3>
+                    <button class="w-full sm:w-auto cta-button bg-gray-200 text-gray-700 hover:bg-gray-300 border border-gray-300">
+                        <i class="fas fa-heart mr-2"></i>Agregar a Lista de Deseos
+                    </button>
+                    <p class="text-sm text-gray-600 mt-2">Clases: <code>cta-button bg-gray-200 text-gray-700 hover:bg-gray-300 border border-gray-300</code>.</p>
+                </div>
+                <div>
+                    <h3 class="style-guide-subsection-title">Botón WhatsApp</h3>
+                     <button class="w-full sm:w-auto cta-button bg-green-500 hover:bg-green-600 text-white">
+                        <i class="fab fa-whatsapp mr-2"></i>Consultar por WhatsApp
+                    </button>
+                    <p class="text-sm text-gray-600 mt-2">Clases: <code>cta-button bg-green-500 hover:bg-green-600 text-white</code>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tarjetas -->
+        <section class="style-guide-section">
+            <h2 class="style-guide-section-title">Tarjetas</h2>
+            
+            <h3 class="style-guide-subsection-title">Tarjeta de Producto (<code>product_card.html</code>)</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+                <div class="product-card bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://placehold.co/300x200/e2e8f0/333?text=Producto" alt="[Imagen de Producto]" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1 text-gray-800">Nombre del Producto Ejemplo</h3>
+                        <p class="text-gray-600 text-sm mb-2">Breve descripción o categoría.</p>
+                        <p class="text-xl font-bold text-blue-600 mb-3">$000.000</p>
+                        <button class="w-full cta-button primary-cta text-sm">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="style-guide-subsection-title">Tarjeta de Categoría (<code>category_card.html</code>)</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8">
+                 <a href="#" class="category-card bg-gray-50 p-4 text-center shadow hover:shadow-lg rounded-lg">
+                    <img src="https://placehold.co/150x100/e2e8f0/333?text=Categoría" alt="[Imagen de Categoría]" class="mx-auto mb-3 h-20 w-auto object-contain rounded">
+                    <h3 class="font-semibold text-gray-800">Nombre Categoría</h3>
+                </a>
+            </div>
+
+            <h3 class="style-guide-subsection-title">Tarjeta de Testimonio (<code>testimonial_card.html</code>)</h3>
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div class="p-6 bg-gray-50 rounded-lg shadow">
+                    <p class="text-gray-600 mb-4">"Cita del testimonio aquí."</p>
+                    <p class="font-semibold text-gray-800">- Nombre del Cliente</p>
+                </div>
+            </div>
+
+            <h3 class="style-guide-subsection-title">Tarjeta de Servicio (de <code>service.html</code>)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow duration-300">
+                    <i class="fas fa-laptop-medical fa-3x text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Diagnóstico y Reparación</h3>
+                    <p class="text-gray-600">Identificamos y solucionamos problemas de hardware y software en PCs y notebooks de todas las marcas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Elementos de Formulario -->
+        <section class="style-guide-section">
+            <h2 class="style-guide-section-title">Elementos de Formulario</h2>
+            <div class="max-w-md space-y-6">
+                <div>
+                    <label for="sg_text_input" class="block text-sm font-medium text-gray-700">Input de Texto</label>
+                    <input type="text" name="sg_text_input" id="sg_text_input" placeholder="Ej. Juan Pérez" class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="sg_select" class="block text-sm font-medium text-gray-700">Selector</label>
+                    <select id="sg_select" name="sg_select" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        <option>Opción 1</option>
+                        <option>Opción 2</option>
+                        <option>Opción 3</option>
+                    </select>
+                </div>
+                 <div>
+                    <label for="sg_textarea" class="block text-sm font-medium text-gray-700">Área de Texto</label>
+                    <textarea id="sg_textarea" name="sg_textarea" rows="3" placeholder="Escribe tu mensaje aquí..." class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+                </div>
+                <fieldset class="space-y-2">
+                    <legend class="text-sm font-medium text-gray-700">Checkboxes</legend>
+                    <div><label class="flex items-center"><input type="checkbox" class="form-checkbox rounded text-blue-600 mr-2"> Opción A</label></div>
+                    <div><label class="flex items-center"><input type="checkbox" class="form-checkbox rounded text-blue-600 mr-2" checked> Opción B (Marcada)</label></div>
+                </fieldset>
+                 <fieldset class="space-y-2">
+                    <legend class="text-sm font-medium text-gray-700">Radio Buttons</legend>
+                    <div><label class="flex items-center"><input type="radio" name="sg_radio_group" class="form-radio text-blue-600 mr-2"> Alternativa 1</label></div>
+                    <div><label class="flex items-center"><input type="radio" name="sg_radio_group" class="form-radio text-blue-600 mr-2" checked> Alternativa 2 (Seleccionada)</label></div>
+                </fieldset>
+            </div>
+        </section>
+
+        <!-- Componentes de Navegación -->
+        <section class="style-guide-section overflow-x-auto">
+            <h2 class="style-guide-section-title">Componente de Navegación (Navbar)</h2>
+            <div class="mb-4 p-4 border rounded-md bg-gray-200">
+                <!-- Navbar -->
+                <nav class="bg-white shadow-md sticky top-0 z-50">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex items-center justify-between h-16">
+                            <div class="flex items-center">
+                                <a href="#" class="flex-shrink-0">
+                                    <span class="text-2xl font-bold text-blue-600">Digiplot</span>
+                                </a>
+                            </div>
+                            <div class="hidden md:block">
+                                <div class="ml-10 flex items-baseline space-x-4">
+                                    <a href="#" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+                                    <div class="relative group">
+                                        <button class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
+                                            Productos <i class="fas fa-chevron-down ml-1"></i>
+                                        </button>
+                                        <div class="absolute left-0 mt-2 w-96 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out invisible group-hover:visible z-20">
+                                            <div class="p-4 grid grid-cols-2 gap-4">
+                                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Computadores</a>
+                                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Notebooks</a>
+                                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Componentes PC</a>
+                                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Periféricos</a>
+                                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Almacenamiento</a>
+                                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Audio y Video</a>
+                                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Impresoras</a>
+                                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Accesorios</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Servicio Técnico</a>
+                                    <a href="#" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Nosotros</a>
+                                    <a href="#" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contacto</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="relative hidden md:block mr-4">
+                                    <input type="search" placeholder="Buscar productos..." class="form-input py-2 px-3 border border-gray-300 rounded-md text-sm leading-5 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                    <span class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                        <i class="fas fa-search text-gray-400"></i>
+                                    </span>
+                                </div>
+                                <a href="#" class="text-gray-600 hover:text-gray-800 ml-2">
+                                    <i class="fas fa-shopping-cart fa-lg"></i>
+                                </a>
+                                <a href="#" class="text-gray-600 hover:text-gray-800 ml-4">
+                                    <i class="fas fa-user-circle fa-lg"></i>
+                                </a>
+                            </div>
+                            <div class="-mr-2 flex md:hidden">
+                                <button type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button-sg">
+                                    <span class="sr-only">Abrir menú principal</span>
+                                    <i class="fas fa-bars fa-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:hidden hidden" id="mobile-menu-sg">
+                        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                            <input type="search" placeholder="Buscar productos..." class="form-input py-2 px-3 border border-gray-300 rounded-md text-sm leading-5 w-full mb-2">
+                            <a href="#" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+                            <a href="#" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Productos</a>
+                            <a href="#" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Servicio Técnico</a>
+                            <a href="#" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Nosotros</a>
+                            <a href="#" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Contacto</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <p class="text-sm text-gray-600">Nota: El menú móvil de la barra de navegación requiere JavaScript para funcionar, lo cual no está habilitado en esta guía de estilo por defecto. Se han usado IDs diferentes (`mobile-menu-button-sg`, `mobile-menu-sg`) para evitar conflictos si se decide añadir el JS original.</p>
+        </section>
+
+        <!-- Componente de Pie de Página -->
+        <section class="style-guide-section overflow-x-auto">
+            <h2 class="style-guide-section-title">Componente de Pie de Página (Footer)</h2>
+            <div class="border rounded-md bg-gray-200">
+                <footer class="footer-bg text-white pt-12 pb-8">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-8">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-4">Digiplot</h3>
+                                <p class="text-gray-300">Tu tienda de confianza para soluciones computacionales, productos tecnológicos y servicio técnico especializado en Santiago.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">Enlaces Rápidos</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-gray-300 hover:text-white">Productos</a></li>
+                                    <li><a href="#" class="text-gray-300 hover:text-white">Servicio Técnico</a></li>
+                                    <li><a href="#" class="text-gray-300 hover:text-white">Nosotros</a></li>
+                                    <li><a href="#" class="text-gray-300 hover:text-white">Contacto</a></li>
+                                    <li><a href="#" class="text-gray-300 hover:text-white">Términos y Condiciones</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">Contacto</h3>
+                                <address class="not-italic text-gray-300 space-y-2">
+                                    <p><i class="fas fa-map-marker-alt mr-2"></i>Av. Providencia Nº1484, Providencia</p>
+                                    <p><i class="fas fa-map-marker-alt mr-2"></i>Santa Beatriz Nº91, Providencia</p>
+                                    <p><i class="fas fa-phone mr-2"></i>+56 2 2236 3220</p>
+                                    <p><i class="fas fa-envelope mr-2"></i>servicioalcliente@digiplot.cl</p>
+                                </address>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">Síguenos</h3>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                    <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                                    <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                                </div>
+                                <h3 class="text-lg font-semibold mt-6 mb-2">Métodos de Pago</h3>
+                                 <img src="https://placehold.co/200x50/e2e8f0/333?text=Webpay+y+Otros" alt="[Imagen de Métodos de pago]" class="h-8" onerror="this.alt='Métodos de Pago Aceptados'; this.src='https://placehold.co/200x40/ffffff/333?text=Métodos+de+Pago';">
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+                            <p>&copy; <span id="currentYear-sg">2024</span> Digiplot - Ingtech SpA. Todos los derechos reservados.</p>
+                            <p>Diseño conceptual para demostración.</p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+             <p class="text-sm text-gray-600 mt-2">Nota: El año actual en el footer (`<span id="currentYear-sg">`) se ha fijado a 2024 para esta guía, ya que el script `js/main.js` no está incluido.</p>
+        </section>
+        
+    </div>
+    <!-- Script para funcionalidad de menú móvil en la guía de estilo (opcional) -->
+    <script>
+        const mobileMenuButtonSG = document.getElementById('mobile-menu-button-sg');
+        const mobileMenuSG = document.getElementById('mobile-menu-sg');
+        if (mobileMenuButtonSG && mobileMenuSG) {
+            mobileMenuButtonSG.addEventListener('click', () => {
+                const expanded = mobileMenuButtonSG.getAttribute('aria-expanded') === 'true' || false;
+                mobileMenuButtonSG.setAttribute('aria-expanded', !expanded);
+                mobileMenuSG.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>

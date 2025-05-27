@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categoría de Productos - Digiplot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css"> <!-- Adjusted path -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg { /* May not be used on this page, but keeping for consistency for now */
+            background-color: #1a202c;
+        }
+        .category-card, .product-card { /* product-card is used */
+            border-radius: 0.5rem; /* 8px */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .category-card:hover, .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .cta-button { /* Used in product-card */
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem; /* 6px */
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .primary-cta { /* Used in product-card */
+            background-color: #3b82f6; /* Blue */
+            color: white;
+        }
+        .primary-cta:hover {
+            background-color: #2563eb;
+        }
+        .secondary-cta { /* May not be used directly here, but part of the theme */
+            background-color: #10b981; /* Green */
+            color: white;
+        }
+        .secondary-cta:hover {
+            background-color: #059669;
+        }
+        .footer-bg { /* Used in footer */
+            background-color: #374151; /* Gray */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex-shrink-0"> <!-- Adjusted link -->
+                        <span class="text-2xl font-bold text-blue-600">Digiplot</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="../index.html" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Inicio</a> <!-- Adjusted link -->
+                        <div class="relative group">
+                            <button class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
+                                Productos <i class="fas fa-chevron-down ml-1"></i>
+                            </button>
+                            <div class="absolute left-0 mt-2 w-96 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out invisible group-hover:visible z-20">
+                                <div class="p-4 grid grid-cols-2 gap-4">
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Computadores</a>
+                                    <a href="./category.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Notebooks</a> <!-- Example link to this page -->
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Componentes PC</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Periféricos</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Almacenamiento</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Audio y Video</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Impresoras</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Accesorios</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Servicio Técnico</a>
+                        <a href="#" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Nosotros</a>
+                        <a href="#" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contacto</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative hidden md:block mr-4">
+                        <input type="search" placeholder="Buscar productos..." class="form-input py-2 px-3 border border-gray-300 rounded-md text-sm leading-5 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <span class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                            <i class="fas fa-search text-gray-400"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="text-gray-600 hover:text-gray-800 ml-2">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-gray-800 ml-4">
+                        <i class="fas fa-user-circle fa-lg"></i>
+                    </a>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <input type="search" placeholder="Buscar productos..." class="form-input py-2 px-3 border border-gray-300 rounded-md text-sm leading-5 w-full mb-2">
+                <a href="../index.html" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Inicio</a> <!-- Adjusted link -->
+                <a href="./category.html" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Productos</a> <!-- Example link -->
+                <a href="#" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Servicio Técnico</a>
+                <a href="#" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Nosotros</a>
+                <a href="#" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-6 text-sm text-gray-600">
+            <ol class="list-none p-0 inline-flex">
+                <li class="flex items-center">
+                    <a href="../index.html" class="hover:text-blue-600">Inicio</a> <!-- Adjusted link -->
+                    <span class="mx-2">/</span>
+                </li>
+                <li class="flex items-center text-gray-800" aria-current="page">
+                    Notebooks <!-- Example Category -->
+                </li>
+            </ol>
+        </nav>
+
+        <!-- Category Title -->
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Notebooks</h1> <!-- Example Category -->
+
+        <!-- Main Layout Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Filters Column -->
+            <aside class="md:col-span-1 bg-white p-6 rounded-lg shadow-lg mb-6 md:mb-0 h-fit sticky top-24"> {/* Added h-fit and sticky for better UX on desktop */}
+                <h2 class="text-xl font-semibold mb-6 text-gray-800">Filtros</h2>
+
+                <!-- Filter Group: Marca -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-3 text-gray-700">Marca</h3>
+                    <div class="space-y-2">
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox rounded text-blue-600 mr-2"> Marca A</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox rounded text-blue-600 mr-2"> Marca B</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox rounded text-blue-600 mr-2" checked> Marca C</label></div>
+                    </div>
+                </div>
+
+                <!-- Filter Group: Precio -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-3 text-gray-700">Precio</h3>
+                    <div class="space-y-2">
+                        <div><label class="flex items-center"><input type="radio" name="price" class="form-radio text-blue-600 mr-2"> $0 - $500.000</label></div>
+                        <div><label class="flex items-center"><input type="radio" name="price" class="form-radio text-blue-600 mr-2" checked> $500.001 - $1.000.000</label></div>
+                        <div><label class="flex items-center"><input type="radio" name="price" class="form-radio text-blue-600 mr-2"> $1.000.001+</label></div>
+                    </div>
+                </div>
+
+                <!-- Filter Group: Especificación -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-3 text-gray-700">Tamaño de Pantalla</h3>
+                    <div class="space-y-2">
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox rounded text-blue-600 mr-2"> 13 pulgadas</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox rounded text-blue-600 mr-2"> 14 pulgadas</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox rounded text-blue-600 mr-2"> 15 pulgadas</label></div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Products Column -->
+            <div class="md:col-span-3">
+                <!-- Sorting Bar -->
+                <div class="mb-6 flex items-center justify-between">
+                    <p class="text-sm text-gray-600">Mostrando <span class="font-semibold">1-9</span> de <span class="font-semibold">27</span> productos</p>
+                    <div class="relative">
+                        <select class="form-select appearance-none block w-full sm:w-auto pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 rounded-md">
+                            <option>Ordenar por: Relevancia</option>
+                            <option>Ordenar por: Precio Menor</option>
+                            <option>Ordenar por: Precio Mayor</option>
+                            <option>Ordenar por: Más Nuevos</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <!-- Product Card 1 -->
+                    <div class="product-card bg-white rounded-lg shadow overflow-hidden">
+                        <img src="https://placehold.co/300x200/e2e8f0/333?text=Notebook+1" alt="[Imagen de Notebook 1]" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-1 text-gray-800">Notebook Gamer Pro X</h3>
+                            <p class="text-gray-600 text-sm mb-2">Intel i7, 16GB RAM, SSD 512GB, RTX 3060</p>
+                            <p class="text-xl font-bold text-blue-600 mb-3">$1.299.990</p>
+                            <button class="w-full cta-button primary-cta text-sm">
+                                <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div class="product-card bg-white rounded-lg shadow overflow-hidden">
+                        <img src="https://placehold.co/300x200/e2e8f0/333?text=Notebook+2" alt="[Imagen de Notebook 2]" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-1 text-gray-800">Ultrabook Ligero Z</h3>
+                            <p class="text-gray-600 text-sm mb-2">Intel i5, 8GB RAM, SSD 256GB, 14 pulgadas</p>
+                            <p class="text-xl font-bold text-blue-600 mb-3">$749.990</p>
+                            <button class="w-full cta-button primary-cta text-sm">
+                                <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div class="product-card bg-white rounded-lg shadow overflow-hidden">
+                        <img src="https://placehold.co/300x200/e2e8f0/333?text=Notebook+3" alt="[Imagen de Notebook 3]" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-1 text-gray-800">Workstation Potente W</h3>
+                            <p class="text-gray-600 text-sm mb-2">Intel Xeon, 32GB RAM, SSD 1TB, Quadro T2000</p>
+                            <p class="text-xl font-bold text-blue-600 mb-3">$2.199.990</p>
+                            <button class="w-full cta-button primary-cta text-sm">
+                                <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Product Card 4 (Example) -->
+                    <div class="product-card bg-white rounded-lg shadow overflow-hidden">
+                        <img src="https://placehold.co/300x200/e2e8f0/333?text=Notebook+4" alt="[Imagen de Notebook 4]" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-1 text-gray-800">Convertible Touch T</h3>
+                            <p class="text-gray-600 text-sm mb-2">Intel i7, 16GB RAM, SSD 512GB, Pantalla Táctil</p>
+                            <p class="text-xl font-bold text-blue-600 mb-3">$999.990</p>
+                            <button class="w-full cta-button primary-cta text-sm">
+                                <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                     <!-- Product Card 5 (Example) -->
+                    <div class="product-card bg-white rounded-lg shadow overflow-hidden">
+                        <img src="https://placehold.co/300x200/e2e8f0/333?text=Notebook+5" alt="[Imagen de Notebook 5]" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-1 text-gray-800">Notebook Básico E</h3>
+                            <p class="text-gray-600 text-sm mb-2">Intel Celeron, 4GB RAM, HDD 1TB, Uso Diario</p>
+                            <p class="text-xl font-bold text-blue-600 mb-3">$349.990</p>
+                            <button class="w-full cta-button primary-cta text-sm">
+                                <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                     <!-- Product Card 6 (Example) -->
+                    <div class="product-card bg-white rounded-lg shadow overflow-hidden">
+                        <img src="https://placehold.co/300x200/e2e8f0/333?text=Notebook+6" alt="[Imagen de Notebook 6]" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-1 text-gray-800">MacBook Air M2</h3>
+                            <p class="text-gray-600 text-sm mb-2">Chip M2, 8GB RAM, SSD 256GB, Pantalla Retina</p>
+                            <p class="text-xl font-bold text-blue-600 mb-3">$1.149.990</p>
+                            <button class="w-full cta-button primary-cta text-sm">
+                                <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Page navigation" class="mt-10 flex justify-center">
+                    <ul class="inline-flex items-center -space-x-px">
+                        <li><a href="#" class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">Anterior</a></li>
+                        <li><a href="#" class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a></li>
+                        <li aria-current="page"><a href="#" class="py-2 px-3 text-blue-600 bg-blue-50 border border-gray-300 hover:bg-blue-100 hover:text-blue-700 z-10">2</a></li> {/* Added z-10 for current page style overlap */}
+                        <li><a href="#" class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">3</a></li>
+                        <li><a href="#" class="py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">Siguiente</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-bg text-white pt-12 pb-8 mt-16"> {/* Added mt-16 for spacing */}
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Digiplot</h3>
+                    <p class="text-gray-300">Tu tienda de confianza para soluciones computacionales, productos tecnológicos y servicio técnico especializado en Santiago.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Enlaces Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Productos</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Servicio Técnico</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Nosotros</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Contacto</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contacto</h3>
+                    <address class="not-italic text-gray-300 space-y-2">
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Av. Providencia Nº1484, Providencia</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Santa Beatriz Nº91, Providencia</p>
+                        <p><i class="fas fa-phone mr-2"></i>+56 2 2236 3220</p>
+                        <p><i class="fas fa-envelope mr-2"></i>servicioalcliente@digiplot.cl</p>
+                    </address>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Síguenos</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                    </div>
+                    <h3 class="text-lg font-semibold mt-6 mb-2">Métodos de Pago</h3>
+                     <img src="https://placehold.co/200x50/e2e8f0/333?text=Webpay+y+Otros" alt="[Imagen de Métodos de pago]" class="h-8" onerror="this.alt='Métodos de Pago Aceptados'; this.src='https://placehold.co/200x40/ffffff/333?text=Métodos+de+Pago';">
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; <span id="currentYear"></span> Digiplot - Ingtech SpA. Todos los derechos reservados.</p>
+                <p>Diseño conceptual para demostración.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js" defer></script> <!-- Adjusted path -->
+
+</body>
+</html>
