@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digiplot - Soluciones Computacionales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="src/css/style.css"> <!-- Adjusted path -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-color: #1a202c; /* Dark background for hero */
+        }
+        .category-card, .product-card {
+            border-radius: 0.5rem; /* 8px */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .category-card:hover, .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .cta-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem; /* 6px */
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .primary-cta {
+            background-color: #3b82f6; /* Blue */
+            color: white;
+        }
+        .primary-cta:hover {
+            background-color: #2563eb;
+        }
+        .secondary-cta {
+            background-color: #10b981; /* Green */
+            color: white;
+        }
+        .secondary-cta:hover {
+            background-color: #059669;
+        }
+        .footer-bg {
+            background-color: #374151; /* Gray */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0"> <!-- Adjusted to root index.html -->
+                        <span class="text-2xl font-bold text-blue-600">Digiplot</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Inicio</a> <!-- Adjusted to root index.html -->
+                        <div class="relative group">
+                            <button class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
+                                Productos <i class="fas fa-chevron-down ml-1"></i>
+                            </button>
+                            <div class="absolute left-0 mt-2 w-96 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out invisible group-hover:visible z-20">
+                                <div class="p-4 grid grid-cols-2 gap-4">
+                                    <a href="src/pages/category.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Computadores</a> <!-- Path to pages -->
+                                    <a href="src/pages/category.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Notebooks</a>
+                                    <a href="src/pages/category.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Componentes PC</a>
+                                    <a href="src/pages/category.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Periféricos</a>
+                                    <a href="src/pages/category.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Almacenamiento</a>
+                                    <a href="src/pages/category.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Audio y Video</a>
+                                    <a href="src/pages/category.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Impresoras</a>
+                                    <a href="src/pages/category.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">Accesorios</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="src/pages/service.html" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Servicio Técnico</a> <!-- Path to pages -->
+                        <a href="src/pages/about.html" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Nosotros</a> <!-- Path to pages -->
+                        <a href="src/pages/contact.html" class="text-gray-700 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contacto</a> <!-- Path to pages -->
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative hidden md:block mr-4">
+                        <input type="search" placeholder="Buscar productos..." class="form-input py-2 px-3 border border-gray-300 rounded-md text-sm leading-5 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <span class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                            <i class="fas fa-search text-gray-400"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="text-gray-600 hover:text-gray-800 ml-2"> <!-- Assuming cart/user are dynamic or placeholder -->
+                        <i class="fas fa-shopping-cart fa-lg"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-gray-800 ml-4">
+                        <i class="fas fa-user-circle fa-lg"></i>
+                    </a>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <input type="search" placeholder="Buscar productos..." class="form-input py-2 px-3 border border-gray-300 rounded-md text-sm leading-5 w-full mb-2">
+                <a href="index.html" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Inicio</a> <!-- Adjusted to root index.html -->
+                <a href="src/pages/category.html" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Productos</a> <!-- Path to pages -->
+                <a href="src/pages/service.html" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Servicio Técnico</a>
+                <a href="src/pages/about.html" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Nosotros</a>
+                <a href="src/pages/contact.html" class="text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-bg text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+                Tu Aliado en Tecnología en Chile
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                Encuentra los mejores productos, accesorios y recibe soporte técnico experto para todas tus necesidades computacionales.
+            </p>
+            <div class="space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#productos-destacados" class="block w-full sm:w-auto sm:inline-block cta-button primary-cta">Ver Productos Destacados</a>
+                <a href="#servicios" class="block w-full sm:w-auto sm:inline-block cta-button secondary-cta">Conocer Nuestros Servicios</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-900">Explora Nuestras Categorías</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+                <a href="src/pages/category.html" class="category-card bg-gray-50 p-4 text-center shadow hover:shadow-lg rounded-lg"> <!-- Path to pages -->
+                    <img src="https://placehold.co/150x100/e2e8f0/333?text=Notebooks" alt="[Imagen de Notebooks]" class="mx-auto mb-3 h-20 w-auto object-contain rounded">
+                    <h3 class="font-semibold text-gray-800">Notebooks</h3>
+                </a>
+                <a href="src/pages/category.html" class="category-card bg-gray-50 p-4 text-center shadow hover:shadow-lg rounded-lg">
+                    <img src="https://placehold.co/150x100/e2e8f0/333?text=Componentes" alt="[Imagen de Componentes de PC]" class="mx-auto mb-3 h-20 w-auto object-contain rounded">
+                    <h3 class="font-semibold text-gray-800">Componentes PC</h3>
+                </a>
+                <a href="src/pages/category.html" class="category-card bg-gray-50 p-4 text-center shadow hover:shadow-lg rounded-lg">
+                     <img src="https://placehold.co/150x100/e2e8f0/333?text=Periféricos" alt="[Imagen de Periféricos]" class="mx-auto mb-3 h-20 w-auto object-contain rounded">
+                    <h3 class="font-semibold text-gray-800">Periféricos</h3>
+                </a>
+                <a href="src/pages/category.html" class="category-card bg-gray-50 p-4 text-center shadow hover:shadow-lg rounded-lg">
+                     <img src="https://placehold.co/150x100/e2e8f0/333?text=Impresoras" alt="[Imagen de Impresoras]" class="mx-auto mb-3 h-20 w-auto object-contain rounded">
+                    <h3 class="font-semibold text-gray-800">Impresoras</h3>
+                </a>
+                <a href="src/pages/category.html" class="category-card bg-gray-50 p-4 text-center shadow hover:shadow-lg rounded-lg">
+                     <img src="https://placehold.co/150x100/e2e8f0/333?text=Audio" alt="[Imagen de Equipos de Audio]" class="mx-auto mb-3 h-20 w-auto object-contain rounded">
+                    <h3 class="font-semibold text-gray-800">Audio y Video</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="productos-destacados" class="py-12 md:py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-center">Productos Destacados</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+                <div class="product-card bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://placehold.co/300x200/e2e8f0/333?text=Producto+1" alt="[Imagen de Producto Destacado 1]" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1 text-gray-800">Nombre del Producto Ejemplo</h3>
+                        <p class="text-gray-600 text-sm mb-2">Breve descripción o categoría.</p>
+                        <p class="text-xl font-bold text-blue-600 mb-3">$199.990</p>
+                        <button class="w-full cta-button primary-cta text-sm">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://placehold.co/300x200/e2e8f0/333?text=Producto+2" alt="[Imagen de Producto Destacado 2]" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1 text-gray-800">Otro Producto Interesante</h3>
+                        <p class="text-gray-600 text-sm mb-2">Ideal para oficina o gaming.</p>
+                        <p class="text-xl font-bold text-blue-600 mb-3">$249.500</p>
+                        <button class="w-full cta-button primary-cta text-sm">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://placehold.co/300x200/e2e8f0/333?text=Producto+3" alt="[Imagen de Producto Destacado 3]" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1 text-gray-800">Accesorio Esencial</h3>
+                        <p class="text-gray-600 text-sm mb-2">Mejora tu productividad.</p>
+                        <p class="text-xl font-bold text-blue-600 mb-3">$45.900</p>
+                        <button class="w-full cta-button primary-cta text-sm">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
+                    </div>
+                </div>
+                 <div class="product-card bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://placehold.co/300x200/e2e8f0/333?text=Producto+4" alt="[Imagen de Producto Destacado 4]" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1 text-gray-800">Última Tecnología</h3>
+                        <p class="text-gray-600 text-sm mb-2">Innovación y rendimiento.</p>
+                        <p class="text-xl font-bold text-blue-600 mb-3">$399.000</p>
+                        <button class="w-full cta-button primary-cta text-sm">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="src/pages/category.html" class="cta-button secondary-cta">Ver Todos los Productos</a> <!-- Path to pages -->
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="py-12 md:py-16 bg-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-900">Nuestros Servicios de Soporte Técnico</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <img src="https://placehold.co/500x350/cbd5e0/333?text=Servicio+Técnico" alt="[Imagen de Servicio Técnico]" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="text-gray-700">
+                    <p class="text-lg mb-4">
+                        ¿Problemas con tu equipo? Ofrecemos diagnóstico y reparación para computadores, notebooks y más. Nuestro equipo de expertos está listo para ayudarte.
+                    </p>
+                    <ul class="list-disc list-inside mb-6 space-y-2">
+                        <li>Reparación de Hardware y Software</li>
+                        <li>Mantenimiento Preventivo</li>
+                        <li>Instalación de Componentes</li>
+                        <li>Asesoría Personalizada</li>
+                    </ul>
+                    <a href="src/pages/service.html" class="cta-button primary-cta">Solicitar Servicio Técnico</a> <!-- Path to pages -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-900">Lo que Dicen Nuestros Clientes</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 bg-gray-50 rounded-lg shadow">
+                    <p class="text-gray-600 mb-4">"Excelente servicio y productos de calidad. Resolvieron mi problema rápidamente."</p>
+                    <p class="font-semibold text-gray-800">- Cliente Satisfecho</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-lg shadow">
+                    <p class="text-gray-600 mb-4">"La mejor tienda de tecnología en Providencia. Siempre encuentro lo que necesito."</p>
+                    <p class="font-semibold text-gray-800">- Usuario Frecuente</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-lg shadow">
+                    <p class="text-gray-600 mb-4">"Muy buena atención al cliente y asesoramiento técnico. ¡Recomendados!"</p>
+                    <p class="font-semibold text-gray-800">- Empresa Cliente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-bg text-white pt-12 pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Digiplot</h3>
+                    <p class="text-gray-300">Tu tienda de confianza para soluciones computacionales, productos tecnológicos y servicio técnico especializado en Santiago.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Enlaces Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="src/pages/category.html" class="text-gray-300 hover:text-white">Productos</a></li> <!-- Path to pages -->
+                        <li><a href="src/pages/service.html" class="text-gray-300 hover:text-white">Servicio Técnico</a></li>
+                        <li><a href="src/pages/about.html" class="text-gray-300 hover:text-white">Nosotros</a></li>
+                        <li><a href="src/pages/contact.html" class="text-gray-300 hover:text-white">Contacto</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contacto</h3>
+                    <address class="not-italic text-gray-300 space-y-2">
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Av. Providencia Nº1484, Providencia</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Santa Beatriz Nº91, Providencia</p>
+                        <p><i class="fas fa-phone mr-2"></i>+56 2 2236 3220</p>
+                        <p><i class="fas fa-envelope mr-2"></i>servicioalcliente@digiplot.cl</p>
+                    </address>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Síguenos</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                    </div>
+                    <h3 class="text-lg font-semibold mt-6 mb-2">Métodos de Pago</h3>
+                     <img src="https://placehold.co/200x50/e2e8f0/333?text=Webpay+y+Otros" alt="[Imagen de Métodos de pago]" class="h-8" onerror="this.alt='Métodos de Pago Aceptados'; this.src='https://placehold.co/200x40/ffffff/333?text=Métodos+de+Pago';">
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; <span id="currentYear"></span> Digiplot - Ingtech SpA. Todos los derechos reservados.</p>
+                <p>Diseño conceptual para demostración.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="src/js/main.js" defer></script> <!-- Adjusted path -->
+
+</body>
+</html>
